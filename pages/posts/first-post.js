@@ -1,11 +1,12 @@
 import Head from "next/head";
 import Script from "next/script";
+import Layout from "../components/layout";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function FirstPost() {
   return (
-    <>
+    <Layout>
       <Head>
         <title>First Post</title>
         {/* <script src="https://connect.facebook.net/en_US/sdk.js" /> */}
@@ -28,6 +29,6 @@ export default function FirstPost() {
         width={144} // Desired size with correct aspect ratio
         alt="Your Name"
       />
-    </>
+    </Layout>
   );
 }
