@@ -27,17 +27,23 @@ Here are some conclusions I made while learning Next.js:
 - Next.js has two forms of pre-rendering: Static Generation and Server-side Rendering. The difference is in when it generates the HTML for a page.
 
   - Static Generation is the pre-rendering method that generates the HTML at build time. The pre-rendered HTML is then reused on each request.
+
   - Server-side Rendering is the pre-rendering method that generates the HTML on each request.
+
   - Importantly, Next.js lets you choose which pre-rendering form to use for each page. You can create a "hybrid" Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
 
 - Static Generation can be done with and without data.
 
   - Those pages do not require fetching external data will automatically be statically generated when the app is built for production.
+
   - For some pages, you might not be able to render the HTML without first fetching some external data. Well, in Next.js, when you export a page component, you can also export an async function called `getStaticProps`.
 
 - If you need to fetch data at request time instead of at build time, you can try Server-side Rendering: To use Server-side Rendering, you need to export `getServerSideProps` instead of `getStaticProps` from your page.
 
 - Dynamic routes: How to statically generate pages with dynamic routes? If you want to statically generate a page at a path called `/posts/<id>`, where `<id>` can be dynamic. You need to create a page at `/pages/posts/[id].js` at first. The page file must contain:
+
   - A React component to render this page
+
   - Use `getStaticPaths` which returns an array of possible values for `<id>`
+
   - Use `getStaticProps` which fetches necessary data for the post with `<id>`
